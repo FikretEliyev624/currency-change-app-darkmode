@@ -1,0 +1,60 @@
+body{
+    background-color: #eee;
+    color:#222;
+    transition: 300ms all;
+    -webkit-transition: 300ms all;
+    -moz-transition: 300ms all;
+    -ms-transition: 300ms all;
+    -o-transition: 300ms all;
+}
+body.dark{
+    background-color: #222;
+    color: #fff;
+}
+header.head-dark{
+    background-color: #bf0b6b;
+}
+li.text-dark{
+    color: aliceblue;
+}
+li.text-dark:hover{
+    color: #0b1dbf;
+}
+button.dark-btn{
+       background-color: #bf0b6b;
+}
+
+button.dark-btn:hover{
+    background-color: #a286b8;
+}
+
+.mode-control input{
+    position: absolute;
+    opacity: 0;
+}
+.mode-control span:nth-of-type(2){
+    display: none;
+}
+.mode-control input:checked+span {
+    display: none;
+}
+.mode-control input:checked+span+span {
+    display: inline-block;
+}
+#sun{
+    height: 50px;
+    position: absolute;
+    right: 18px;
+}
+#moon{
+    height: 40px;
+    position: absolute;
+    right: 18px;
+    top: 5px;
+}
+
+
+
+
+
+

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="darkmode/darkmode.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <ul>
+                <li><img id="header-icon" src="img/Asset 1@3x 1.svg" alt=""></li>
+                <li>БАНК</li>
+                <li>БИЗНЕС</li>
+                <li>ИНВЕСТИЦИИ</li>
+                <li>СТРАХОВАНИЕ</li>
+                <li>МОБАЙЛ</li>
+                <li>ПУТЕШЕСТВИЯ</li>
+                <li>РАЗВЛЕЧЕНИЯ</li>
+                <button id="btn-sign">ВОЙТИ</button>
+                <label class="mode-control">
+                    <input id="mode-btn"  type="checkbox">
+                    <span><img src="./img/sun-svgrepo-com.svg" id="moon" alt=""></span>
+                    <span><img src="./img/moon-moon-svgrepo-com.svg" id="moon" alt=""></span>
+                </label>
+            </ul>
+        </header>
+        <section>
+            <div class="main-text">
+                <h1>Конвертер валют онлайн</h1>
+            </div>
+            <div class="currency-main">
+            <div class="currency">
+                <div class="small-text">
+                    <p>У меня есть </p>
+                </div>
+                <div class="btn-group" id="btn-group-div1">
+                    <button style="background-color: #833ae0;" class="btn btn-1">RUB</button>
+                    <button class="btn btn-2">USD</button>
+                    <button class="btn btn-3">EUR</button>
+                    <button class="btn btn-4">GBP</button>
+                  </div>
+                  <div class="input-part">
+                      <input type="text" value="1" id="input_amount" class="from-input">
+                      <p id="result-1"></p>
+                  </div>
+            </div>
+            <div class="currency" id="second-div">
+                <div class="small-text">
+                    <p>У меня есть </p>
+                </div>
+                <div class="btn-group" id="btn-group-div2">
+                    <button class="btn btn-5">RUB</button>
+                    <button style="background-color: #833ae0;" class="btn btn-6">USD</button>
+                    <button class="btn btn-7">EUR</button>
+                    <button class="btn btn-8">GBP</button>
+                  </div>
+                  <div class="input-part">
+                      <input type="text" id="output_amount" class="to-input">
+                      <p id="result-2"></p>
+                  </div>
+            </div>
+        </div>
+        </section>
+    </div>
+    <script src="darkmode/app.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

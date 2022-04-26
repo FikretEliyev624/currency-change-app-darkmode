@@ -1,0 +1,83 @@
+    let fromInput=document.querySelector("#input_amount");
+    let toInput=document.querySelector("#output_amount");
+    let result1=document.querySelector("#result-1");
+    let result2=document.querySelector("#result-2");
+    let btnDiv1=document.querySelector("#btn-group-div1");
+    let btnDiv2=document.querySelector("#btn-group-div2");
+    let val1 = 'RUB';
+    let val2 = 'USD';
+
+    let kurs1,kurs2;
+    updateRatesText();
+    currenyStyle(btnDiv1);
+    currenyStyle(btnDiv2);
+
+    
+
+
+
+fromInput.addEventListener("keyup",event=>{
+    fromInput.value=event.target.value.replace(",",".");
+    console.log(event.target.value)
+})
+
+async function updateRatesText(){
+    try{
+        if(val1 === val2){
+            toInput.addEventListener("input",_=>{
+                fromInput.value=toInput.value;
+            });
+            fromInput.addEventListener("input",_=>{
+                toInput.value=fromInput.value;
+            });
+            result1.innerText = `1 ${val1} = 1.0000 ${val2}`;
+            result2.innerText = result1.innerText;
+            toInput.value=fromInput.value;
+        }else{
+            const val1ToVal2 = await fetch(`https://api.exchangerate.host/latest?base=${val1}&symbols=${val2}`);
+            const val1ToVal2Json = await val1ToVal2.json();
+            
+            kurs1 = val1ToVal2Json.rates[val2];
+            result1.innerText = `1 ${val1} = ${kurs1} ${val2}`;
+            
+            const val2ToVal1 = await fetch(`https://api.exchangerate.host/latest?base=${val2}&symbols=${val1}`);
+            const val2ToVal1Json = await val2ToVal1.json();
+            kurs2 = val2ToVal1Json.rates[val1].toFixed(4);
+            result2.innerText = `1 ${val2} = ${kurs1} ${val1}`;
+
+            toInput.value = (kurs1 * fromInput.value).toFixed(4);
+            fromInput.addEventListener("input",_=>{
+                toInput.value = (kurs1 * fromInput.value).toFixed(4);
+            });
+            toInput.addEventListener("input",_=>{
+                fromInput.value = (kurs2 * toInput.value).toFixed(4);
+            })
+        
+        }
+    }catch(err){
+        console.log(err)
+    }
+
+}
+
+btnDiv1.querySelectorAll("button").forEach(item=>{
+    item.addEventListener("click",_=>{
+        val1=item.innerText;
+        updateRatesText();
+    })
+})
+btnDiv2.querySelectorAll("button").forEach(item=>{
+    item.addEventListener("click",_=>{
+        val2=item.innerText;
+        updateRatesText();
+    })
+})
+
+
+fetch('https://api.exchangerate.host/latest?base')
+    .then((response) => {
+        return response.json();
+    })
+    .then((data) => {
+        Object.keys(data.rates);
+    });
